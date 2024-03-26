@@ -1,0 +1,18 @@
+GET http://localhost:8080/
+
+### get all cars
+GET http://localhost:8080/events
+
+### get car details
+GET http://localhost:8080/events/8
+
+### get car details
+POST http://localhost:8080/events
+Content-Type: application/json
+
+{
+    "event_name":"MNG",
+    "organizer_name":"KAMI",
+    "event_date":"31 mei",
+    "is_registered":"false"
+}
