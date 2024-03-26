@@ -1,12 +1,12 @@
 GET http://localhost:8080/
 
-### get all cars
+### get all events
 GET http://localhost:8080/events
 
-### get car details
-GET http://localhost:8080/events/8
+### get events details
+GET http://localhost:8080/events/100
 
-### get car details
+### get insert events
 POST http://localhost:8080/events
 Content-Type: application/json
 
