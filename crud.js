@@ -32,9 +32,16 @@ app.get('/', (req, res) => {
       let id = req.params.id;
       let events = await pool.query('SELECT * FROM events WHERE id = $1', [id]);
       res.send(events.rows);
+
+      if (events.rows.length == 0) {
+        return res.status(404).json({
+            status: false,
+            message: `cant find car with ID ${id}` 
+        })
+      }
   });
 
-  
+  // post insert events
   app.post('/events', async (req, res) => {
       let event_name = req.body.event_name;
       let organizer_name = req.body.organizer_name;
@@ -44,6 +51,17 @@ app.get('/', (req, res) => {
       let events = await pool.query('INSERT INTO events (event_name, organizer_name, event_date, is_registered) values ($1, $2, $3, $4)', [event_name, organizer_name, event_date, is_registered]);
       res.json({ data: events.rowCount });
   });
+
+  // update events detail
+  app.put('/events/:id', async (req, res) => {
+    let id = req.params.id;
+    let event_name = req.body.event_name;
+    let organizer_name = req.body.organizer_name;
+    let event_date = req.body.event_date;
+    let is_registered = req.body.is_registered;
+
+    let hasil = await pool .query('UPDATE events set ')
+  })
 
  app.listen(port, () => {
      console.log('running on port', port);

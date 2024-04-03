@@ -1,0 +1,144 @@
+openapi: 3.0.1
+info:
+  title: CRUD API
+  description: LATIHAN DOKUMENTASI API
+  version: 1.0.0
+  contact:
+    email: revafidela@gmail.com
+servers:
+  - url: http://localhost:8080/
+paths:
+   /events:
+     post:
+       summary: register new events
+       description: mendaftarkan event baru
+       requestBody:
+         content:
+           application/json:
+             schema:
+               type: object
+               properties:
+                 event_name:
+                   type: string
+                   example: 2Shoot
+                 organizer_name:
+                   type: string
+                   example: JOT
+                 event_date:
+                   type: string
+                   example: 5 mei 2024
+                 is_registered:
+                   type: boolean
+                   example: true
+       responses:
+         201:
+           description: success
+           content:
+             application/json:
+               schema:
+                 type: object
+                 properties:
+                   success:
+                     type: boolean
+                     example: true
+                   message:
+                     type: string
+                     example: OK
+                   data:
+                     type: object
+                     properties:
+                      event_name:
+                        type: string
+                        example: 2Shoot
+                      organizer_name:
+                        type: string
+                        example: JOT
+                      event_date:
+                        type: string
+                        example: 5 mei 2024
+                      is_registered:
+                        type: boolean
+                        example: true
+         400:
+           description: event already exist!
+           content:
+             application/json:
+               schema:
+                 type: object
+                 properties:
+                   success:
+                     type: boolean
+                     example: false
+                   message:
+                     type: string
+                     example: event already exist!
+     get:
+       summary: get all events
+       responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                     type: object
+                     properties:
+                      event_name:
+                        type: string
+                        example: 2Shoot
+                      organizer_name:
+                        type: string
+                        example: JOT
+                      event_date:
+                        type: string
+                        example: 5 mei 2024
+                      is_registered:
+                        type: boolean
+                        example: true
+   /events/{events_id}:
+     parameters:
+       - schema:
+           type: integer
+         name: events_id_id
+         in: path
+         required: true
+     get:
+       summary: get detail events
+       responses:
+         200:
+           description: success
+           content:
+             application/json:
+               schema:
+                 type: object
+                 properties:
+                   status:
+                     type: boolean
+                     example: true
+                   message:
+                     type: string
+                     example: OK
+                   data:
+                     type: object
+                     properties:
+                      event_name:
+                        type: string
+                        example: 2Shoot
+                      organizer_name:
+                        type: string
+                        example: JOT
+                      event_date:
+                        type: string
+                        example: 5 mei 2024
+                      is_registered:
+                        type: boolean
+                        example: true
+        
